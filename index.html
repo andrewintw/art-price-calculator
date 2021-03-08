@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            div {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 30pt;
+            }
+
+            span {
+                font-size: 20pt;
+                color: rgb(70, 80, 140);
+            }
+
+            td {
+                height: 40px;
+            }
+
+            button {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+        <script type="text/javascript">
+            function doCalculate() {
+                var spent_hr        = parseFloat(document.getElementById("spent_hr").value);
+                var hourly_rate     = parseFloat(document.getElementById("hourly_rate").value);
+                var materials_cost  = parseFloat(document.getElementById("materials_cost").value);
+                var artwork_costs = spent_hr * hourly_rate + materials_cost;
+                document.getElementById("artwork_costs").innerText = artwork_costs.toFixed(2);
+
+                var desired_profit  = parseFloat(document.getElementById("desired_profit").value);
+                var sale_price = artwork_costs * (1 + parseFloat(desired_profit/100));
+
+                document.getElementById("sale_price").innerText = sale_price.toFixed(2);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div>ART PRICING CALCULATOR TOOL</div>
+
+        <table>
+            <tr>
+                <td><label for="spent_hr">Spent to create the art work (hr): </label></td>
+                <td><input id="spent_hr" type="number" value="0"></td>
+            </tr>
+            <tr>
+                <td><label for="hourly_rate">Salary Per Hour ($/hr): </label></td>
+                <td><input id="hourly_rate" type="number" value="0"></td>
+            </tr>
+            <tr>
+                <td><label for="materials_cost">Cost of Materials ($): </label></td>
+                <td><input id="materials_cost" type="number" value="0"></td>
+            </tr>
+            <tr>
+                <td><label for="artwork_costs">Artwork Costs: </label></td>
+                <td><span id="artwork_costs">0</span>
+            </tr>
+            <tr>
+                <td><label for="desired_profit">Desired Profit (%):</label></td>
+                <td><input id="desired_profit" type="number" value="0"> (0-100)</td>
+            </tr>
+            <tr>
+                <td><label for="sale_price">Sale Price:</label></td>
+                <td><span id="sale_price">0</span>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" onclick="doCalculate()">Calculate</button></span>
+            </tr>
+        </table>
+    </body>
+</html>
